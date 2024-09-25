@@ -1,36 +1,48 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 class MyComponent extends React.Component{
     state = {
-        name: "Trong Nhan",
-        age: 20
+        firstName: '',
+        lastName: ''
     }
 
-    onChangeName = (e) => {
+    onChangeFirstName = (e) => {
         this.setState({
-            name: e.target.value
+            firstName: e.target.value
         })
     }
 
-    onClickBtn = () => {
-        alert("Click Click")
+    onChangeLastName = (e) => {
+        this.setState({
+            lastName: e.target.value
+        })
     }
-    render(){
+
+    onSubmitForm = (e) => {
+        e.preventDefault()
+        console.log(">> check data: ", this.state)
         
+    }
+
+    render(){        
         return (
             <>
-                <div>
-                    <input type='text' value={this.state.name}
-                        onChange={(e) => this.onChangeName(e)}
+                <form>
+                    <label htmlFor="fname">First name:</label><br/>
+                    <input type="text" value={this.state.firstName}
+                        onChange={(e) => this.onChangeFirstName(e)}
                     />
-                </div>
-                <div className='first'>
-                    This is MyComponent, and my name is {this.state.name}
-                </div>
-                <div className='second'>
-                    I'm {this.state.age} years old
-                </div>
-                <button onClick={() => this.onClickBtn()} >Click me</button>
+                    <br/>
+                    <label htmlFor="lname">Last name:</label><br/>
+                    <input type="text" value={this.state.lastName}
+                        onChange={(e) => this.onChangeLastName(e)}
+                    />
+                    <br/>
+                    <br/>
+                    <input type="submit" value="Submit"
+                        onClick={(e) => this.onSubmitForm(e)}
+                    />
+                </form> 
             </>
         )
     }
