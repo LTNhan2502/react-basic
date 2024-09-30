@@ -30,6 +30,7 @@ class MyComponent extends React.Component{
         console.log(">> check data: ", this.state)    
         return (
             <>
+                <div>This is MyComponent page</div>
                 <AddComponent addNewJob={this.addNewJob}/>
                 <br/>
                 <ChildComponent 
